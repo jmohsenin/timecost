@@ -15,8 +15,16 @@
             ]
         }
     ],
-    "options_page": "options.html",
+    "options_ui": {
+        "page": "options.html",
+        "chrome_style": true
+    },
     "permissions": [
         "storage"
-    ]
+    ],
+    "icons": {
+        "16": "icon16.png",
+        "48": "icon48.png",
+        "128": "icon128.png"
+    }
 }

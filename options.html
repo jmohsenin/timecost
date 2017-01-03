@@ -7,15 +7,15 @@
         <style>
             body {
                 background: #f7f7f7;
-                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+                padding: 40px 0 40px;
             }
 
-            h1, h2, h3 {
+            h2, h3 {
                 text-align: center;
             }
 
-            h1 {
-                margin-bottom: 60px;
+            h2 {
+                margin-bottom: 1em;
             }
 
             h3 {
@@ -35,7 +35,7 @@
                 background: #fff;
                 font-size: 24px;
                 border: 1px solid #ddd;
-                padding: 5px;
+
             }
 
             .dollar-sign {
@@ -43,16 +43,23 @@
                 border-right: 0;
                 border-radius: 5px 0 0 5px;
                 color: #999;
+                line-height: 44px;
+                padding: 0 5px;
             }
 
             input[type='number'] {
                 width: 100px;
                 border-radius: 0 5px 5px 0;
+                padding: 5px;
+            }
+
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
             }
         </style>
     </head>
     <body>
-        <h1>Timecost Options</h1>
         <h2>Enter an hourly rate:</h2>
         <div class="hourly-rate-wrapper">
             <span class="dollar-sign">$</span>
