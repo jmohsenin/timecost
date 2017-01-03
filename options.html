@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Timecost Options</title>
+        <link rel="stylesheet" href="normalize.css">
+        <style>
+            body {
+                background: #f7f7f7;
+            }
+
+            h1, h2, h3 {
+                text-align: center;
+            }
+
+            h1 {
+                margin-bottom: 60px;
+            }
+
+            h3 {
+                font-weight: normal;
+                color: #999;
+            }
+
+            .hourly-rate-wrapper {
+                display: flex;
+                justify-content: center;
+                position: relative;
+                margin: 0 auto;
+            }
+
+            .dollar-sign,
+            input[type='number'] {
+                background: #fff;
+                font-size: 24px;
+                border: 1px solid #ddd;
+                padding: 5px;
+            }
+
+            .dollar-sign {
+                float: left;
+                border-right: 0;
+                border-radius: 5px 0 0 5px;
+                color: #999;
+            }
+
+            input[type='number'] {
+                width: 100px;
+                border-radius: 0 5px 5px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Timecost Options</h1>
+        <h2>Enter an hourly rate:</h2>
+        <div class="hourly-rate-wrapper">
+            <span class="dollar-sign">$</span>
+            <input id='hourly-rate' type="number" placeholder="10"/>
+        </div>
+        <h3>Refresh Google Calendar to see this new rate</h3>
+        <script src="options.js"></script>
+    </body>
+</html>

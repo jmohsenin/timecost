@@ -1,4 +1,4 @@
-var COST_PER_HOUR = 10;
+var DEFAULT_COST_PER_HOUR = 10;
 
 // Takes an arbitray string and returns the number of minutes of that event. Formats supported:
 // "Tue, December 27, 8pm - 9pm"
@@ -139,8 +139,8 @@ getNumAttendeesFromDatepicker = function() {
     return attendees;
 };
 
-// TODO: refactor renderTotalCostInEventPreview and renderTotalCostOnEventPage to not use HTML strings
-renderTotalCostInEventPreview = function(el, cost) {
+// TODO: refactor renderCostInEventPreview and renderCostOnEventPage to not use HTML strings
+renderCostInEventPreview = function(el, cost) {
     if (!cost) {
 		return;
 	}
@@ -156,7 +156,7 @@ renderTotalCostInEventPreview = function(el, cost) {
     }
 };
 
-renderTotalCostOnEventPage = function(cost) {
+renderCostOnEventPage = function(cost) {
 	if (!cost) {
 		return;
 	}
@@ -173,17 +173,20 @@ renderTotalCostOnEventPage = function(cost) {
 showCostInEventPreview = function (el) {
 	var dateTimeString = el.find('.neb-date').text(),
 		length = getLengthInMinutesFromString(dateTimeString),
-		attendees = getNumAttendees(el),
-		cost = length * (COST_PER_HOUR / 60) * attendees;
+		attendees = getNumAttendees(el);
 
-	renderTotalCostInEventPreview(el, cost);
+    chrome.storage.sync.get({
+        hourlyRate: DEFAULT_COST_PER_HOUR
+    }, function(items) {
+        var totalCost = length * (items.hourlyRate / 60) * attendees;
+        renderCostInEventPreview(el, totalCost);
+    });
 };
 
 showCostOnEventPage = function() {
     var dateTimeString = $('.ep-drs .ui-sch-schmedit:first').text(),
         length,
-        attendees = getNumAttendeesFromDatepicker(),
-        cost;
+        attendees = getNumAttendeesFromDatepicker();
 
     if (dateTimeString.length > 0) {
         length = getLengthInMinutesFromString(dateTimeString);
@@ -191,9 +194,12 @@ showCostOnEventPage = function() {
         length = getLengthInMinutesFromDatepicker();
     }
 
-    cost = length * (COST_PER_HOUR / 60) * attendees;
-
-    renderTotalCostOnEventPage(cost);
+    chrome.storage.sync.get({
+        hourlyRate: DEFAULT_COST_PER_HOUR
+    }, function(items) {
+        var totalCost = length * (items.hourlyRate / 60) * attendees;
+        renderCostOnEventPage(totalCost);
+    });
 };
 
 // Adapted from http://stackoverflow.com/a/10415599
