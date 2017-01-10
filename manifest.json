@@ -1,6 +1,7 @@
 {
     "manifest_version": 2,
-    "name": "Timecost",
+    "name": "Timecost for Google Calendar",
+    "short_name": "Timecost",
     "version": "0.1",
     "content_scripts": [
         {
