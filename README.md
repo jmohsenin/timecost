@@ -1,5 +1,5 @@
 # timecost
-A [Chrome extension](https://chrome.google.com/webstore/detail/timecost/cifjcccblkmebbpjcccleolaiigagpmf) for showing the real cost of meetings.
+A [Chrome extension](https://chrome.google.com/webstore/detail/timecost/cifjcccblkmebbpjcccleolaiigagpmf) to encourage meeting mindfulness.
 
 ![Timecost Example](./example.png)
 
